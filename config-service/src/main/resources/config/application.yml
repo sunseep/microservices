@@ -1,0 +1,9 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8085/eureka/
+spring:
+  application:
+    name: config-server

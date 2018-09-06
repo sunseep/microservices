@@ -1,0 +1,11 @@
+spring:
+      application:
+        name: zipkin-server
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8085/eureka/
+  instance:
+    hostname: localhost
