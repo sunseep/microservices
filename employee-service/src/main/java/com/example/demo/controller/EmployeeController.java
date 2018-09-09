@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.client.OrgClient;
+import com.example.demo.client.OrgService;
 import com.example.demo.dto.EmployeeDTO;
 import com.example.demo.dto.OrganizationDTO;
 import com.example.demo.model.Employee;
@@ -29,10 +30,13 @@ public class EmployeeController {
 	@Autowired
 	OrgClient orgClient;
 	
+	@Autowired
+	OrgService service;
+	
 	@PostMapping("/")
-	public Employee add(@RequestBody EmployeeDTO employee) {
+	public Employee add(@RequestBody EmployeeDTO employee) throws Exception {
 		LOGGER.info("Employee add: {}", employee);
-		Long id=orgClient.findByName(employee.getOrg().getOrgName());
+		Long id=service.findByName(employee.getOrg().getOrgName());
 		Employee emp=new Employee(id,employee.getName());
 		return repository.save(emp);
 	}

@@ -4,6 +4,17 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+      
+
+hystrix:
+  command:
+    getProductInventoryByCode:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds : 2000
+      circuitBreaker:
+        errorThresholdPercentage: 60
 
 server:
   port: 8092
